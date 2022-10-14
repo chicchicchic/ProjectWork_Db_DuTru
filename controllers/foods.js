@@ -15,7 +15,7 @@ export const getFoods = (req, res, next) => {
         })
 }
 
-//[GET] Get User By ID
+//[GET] Get Food By ID
 export const getFoodByID = (req, res, next) => {
   const foodId = req.params.foodId;
   foodModel.findByPk(foodId)
