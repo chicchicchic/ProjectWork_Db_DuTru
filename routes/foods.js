@@ -1,5 +1,5 @@
 import express from 'express';
-import { getFoods, getFoodByID, createFoods, updateFood } from '../controllers/foods.js'
+import { getFoods, getFoodByID, createFoods, updateFood, deleteFood } from '../controllers/foods.js'
 
 
 var router = express.Router();
@@ -15,6 +15,9 @@ router.post('/', createFoods);
 
 // [POST] Update a dish
 router.post('/update', updateFood);
+
+// [GET] Delete food by ID
+router.get('/delete/:foodId', deleteFood);
 
 
 export default router;

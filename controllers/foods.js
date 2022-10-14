@@ -108,9 +108,33 @@ export const updateFood = (req, res, next) => {
       })
 }
 
-// [] Delete Food
+// [GET] Delete Food
 export const deleteFood = (req, res, next) => {
-  
+  const foodId = req.params.foodId;
+  foodModel.findByPk(foodId)
+      .then(food => {
+        if(!food){
+          res.status(200).json({
+            status: false,
+            message: "Can't find food, Can't delete food",
+          })
+        }else{
+          foodModel
+            .destroy({
+              where: {id: foodId}
+            })
+            .then((result) => {
+              res.status(200).json({
+                  status: true,
+                  message: "Deleted food successfully",
+              })
+            });
+
+        }
+      })
+      .catch(error => {
+          res.status(500).json("No data");
+      })
 }
 
 
